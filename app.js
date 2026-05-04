@@ -231,8 +231,10 @@ app.get('/members', (req, res) =>
 
 app.get('/logout', (req, res) =>
 {
-    req.session.destroy();
-    res.redirect('/');
+    req.session.destroy(() =>
+    {
+        res.redirect('/');
+    });
 });
 
 app.use((req, res) =>
