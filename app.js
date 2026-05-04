@@ -20,6 +20,7 @@ const mongodb_user = process.env.MONGODB_USER;
 const mongodb_password = process.env.MONGODB_PASSWORD;
 const mongodb_database = process.env.MONGODB_DATABASE;
 const session_secret = process.env.NODE_SESSION_SECRET;
+const mongodb_session_secret = process.env.MONGODB_SESSION_SECRET;
 const mongoUrl = `mongodb+srv://${mongodb_user}:${mongodb_password}` +
                  `@${mongodb_host}/${mongodb_database}` +
                  `?retryWrites=true&w=majority`;
@@ -37,7 +38,7 @@ var mongoStore = MongoStore.create(
     collectionName: 'sessions',
     crypto:
     {
-        secret: process.env.MONGODB_SESSION_SECRET
+        secret: mongodb_session_secret
     }
 });
 
