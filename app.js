@@ -35,7 +35,6 @@ app.use(express.static(__dirname + '/public'));
 var mongoStore = MongoStore.create(
 {
     mongoUrl: mongoUrl,
-    collectionName: 'sessions',
     crypto:
     {
         secret: mongodb_session_secret
@@ -47,7 +46,7 @@ app.use(session(
     secret: session_secret,
     store: mongoStore,
     saveUninitialized: false,
-    resave: false
+    resave: true
 }));
 
 app.get('/', (req, res) =>
