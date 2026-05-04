@@ -34,7 +34,11 @@ app.use(express.static(__dirname + '/public'));
 var mongoStore = MongoStore.create(
 {
     mongoUrl: mongoUrl,
-    collectionName: 'sessions'
+    collectionName: 'sessions',
+    crypto:
+    {
+        secret: process.env.MONGODB_SESSION_SECRET
+    }
 });
 
 app.use(session(
