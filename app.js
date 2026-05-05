@@ -34,7 +34,7 @@ app.use(express.static(__dirname + '/public'));
 
 var mongoStore = MongoStore.create(
 {
-    mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/${mongodb_database}`,
+    mongoUrl: mongoUrl,
     crypto:
     {
         secret: mongodb_session_secret
